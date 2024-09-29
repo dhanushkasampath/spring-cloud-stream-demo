@@ -3,3 +3,24 @@ server:
 spring:
   application:
     name: credit-card-verification-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/cc_verification?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+  cloud:
+    stream:
+      function:
+        definition: verifyCreditCardApplication
+      bindings:
+        verifyCreditCardApplication-in-0: # here in is used since it consumes a queue
+          destination: CreditCardApplication # this should same as previous service
+          group: creditCard
+        verifyCreditCardApplication-out-0:
+          destination: CreditCardVerification
+          group: creditCard
