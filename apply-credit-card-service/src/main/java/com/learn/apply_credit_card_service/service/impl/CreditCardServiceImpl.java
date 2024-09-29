@@ -24,7 +24,7 @@ public class CreditCardServiceImpl implements CreditCardService {
         try {
             var creditCard = new CreditCard();
             BeanUtils.copyProperties(creditCardRequest, creditCard);
-
+            creditCard.setPublishStatus(false);
             RandomStringGenerator generator = new RandomStringGenerator.Builder()
                     .withinRange('0', 'z')
                     .filteredBy(Character::isLetterOrDigit)
