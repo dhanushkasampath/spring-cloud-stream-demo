@@ -1,14 +1,11 @@
-package com.learn.apply_credit_card_service.event;
+package com.learn.credit_card_verification_service.event;
 
-import com.learn.apply_credit_card_service.enums.EventType;
+import com.learn.credit_card_verification_service.enums.EventType;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
-/**
- * We started working on this class after db saving successfully
- */
 @Data
 @Builder
 public class NewCreditCardEvent {
