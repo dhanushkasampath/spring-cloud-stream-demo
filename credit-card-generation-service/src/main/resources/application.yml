@@ -22,3 +22,10 @@ spring:
         generateCreditCard-in-0: # here in is used since it consumes a queue
           destination: CreditCardVerification # This is the queue name. This should same as where verification service publish the messages
           group: creditCard # Grouping of queues happens here. It should be same as in other services. ATM we have 2 queues. By this configuration we group them
+          consumer:
+            max-attempts: 1
+      rabbit:
+        bindings:
+          generateCreditCard-in-0:
+            consumer:
+              autoBindDlq: true # This is the only property we need to add to setup the dead letter queue. once restarted we can see another queue has created in the rabbit dashboard

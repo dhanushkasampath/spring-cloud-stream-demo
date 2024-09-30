@@ -7,9 +7,6 @@ connected with shared messaging systems.
 It provides a flexible programming model built on already established spring framework
 
 
-
-
-
 IMPLEMENTATION
 =============
 
@@ -20,11 +17,6 @@ we have used below functional interfaces in below micro-services
 Supplier -> apply-credit-card-service
 Function -> credit-card-verification-service
 Consumer -> credit-card-generation-service
-
-
-
-
-
 
 
 
@@ -75,12 +67,41 @@ Then we will see the dashboard for our spring cloud data flow.
 
 
 
-URIS
+HOW TO REGISTER 3 APPLICATIONS IN "spring cloud data flow server"
+===============================================================
 
+1. In the Applications section Click on Add Application button
+2. Fill the form with requested data. for the URI section, it should be as follows
+3. Select type based on the applciation. (supplier/processor/consumer) 
+
+URIS
 
 maven://com.learn.apply-credit-card-service:jar:0.0.1-SNAPSHOT
 maven://com.learn.credit-card-verification-service:jar:0.0.1-SNAPSHOT
 maven://com.learn.credit-card-generation-service:jar:0.0.1-SNAPSHOT
+
+
+HOW TO CREATE STREAMS
+=====================
+
+1. In the Streams section click on "CREATE STREAM" button
+2. drag and drop the components we registed earlier and join them.
+3. then give a meaning full name to our stream and click on create stream.
+
+Then stream will be created. Before deploy the stream, clear the rabbitmq and tables.
+Then once deployed we can see the queues get generated and tables have created.
+
+
+
+======================================================
+
+If we change the format of the message that send to verification-service it will result in error and data will not inserted to verification table. 
+
+In production this kind of scenarios are not supposed to happen.
+
+This can be handled using dead letter queue.
+
+in spring-cloud-stream we can add deadletter queue by just adding few properties in application.yml file
 
 
 
