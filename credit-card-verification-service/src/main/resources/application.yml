@@ -19,8 +19,8 @@ spring:
         definition: verifyCreditCardApplication
       bindings:
         verifyCreditCardApplication-in-0: # here in is used since it consumes a queue
-          destination: CreditCardApplication # this should same as previous service
+          destination: CreditCardApplication # This is the queue name where this service consumes. this should same as previous service
           group: creditCard
         verifyCreditCardApplication-out-0:
-          destination: CreditCardVerification
+          destination: CreditCardVerification # This is the queue name where this service publish the messages
           group: creditCard

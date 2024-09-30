@@ -4,7 +4,7 @@ spring:
   application:
     name: credit-card-generation-service
   datasource:
-    url: jdbc:mysql://localhost:3306/cc_generate?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/cc_details?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,3 +13,12 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQLDialect
+
+  cloud:
+    stream:
+      function:
+        definition: generateCreditCard  # it should be the method name of our listener class
+      bindings: # since her ewe only consume, it should be an input queue
+        generateCreditCard-in-0: # here in is used since it consumes a queue
+          destination: CreditCardVerification # This is the queue name. This should same as where verification service publish the messages
+          group: creditCard # Grouping of queues happens here. It should be same as in other services. ATM we have 2 queues. By this configuration we group them
