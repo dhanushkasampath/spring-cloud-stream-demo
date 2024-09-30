@@ -24,3 +24,8 @@ spring:
         verifyCreditCardApplication-out-0:
           destination: CreditCardVerification # This is the queue name where this service publish the messages
           group: creditCard # This is the group that above queue belongs to
+      rabbit:
+        bindings:
+          verifyCreditCardApplication-in-0:
+            consumer:
+              autoBindDlq: true # This is the only property we need to add to setup the dead letter queue. once restarted we can see another queue has created in the rabbit dashboard

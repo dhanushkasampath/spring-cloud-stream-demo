@@ -47,7 +47,7 @@ public class CreditCardVerificationServiceImpl implements CreditCardVerification
         var creditCardVerificationList = creditCardVerificationStatusList.stream().map(creditCardVerificationStatus -> {
             var creditCardVerification = new CreditCardVerification();
             BeanUtils.copyProperties(creditCardVerificationStatus, creditCardVerification);
-            creditCardVerification.setStatus(creditCardVerification.getStatus());
+            creditCardVerification.setStatus(creditCardVerificationStatus.getStatus().name());
             return creditCardVerification;
         }).toList();
 

@@ -104,6 +104,20 @@ This can be handled using dead letter queue.
 in spring-cloud-stream we can add deadletter queue by just adding few properties in application.yml file
 
 
+spring:
+	cloud:
+		stream:
+		   rabbit:
+				bindings:
+				  verifyCreditCardApplication-in-0:
+				    consumer:
+				      autoBindDlq: true
+
+Note: if above property is added after the queue generation, it will not work. just delete the queue and restart the application
+
+
+
+
 
 
 
