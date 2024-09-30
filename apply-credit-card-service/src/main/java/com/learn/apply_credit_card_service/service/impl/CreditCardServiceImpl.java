@@ -31,7 +31,7 @@ public class CreditCardServiceImpl implements CreditCardService {
                     .build();
 
             creditCard.setRefId(generator.generate(10));
-            var savedCreditCard = creditCardRepository.save(creditCard);
+            var savedCreditCard = creditCardRepository.save(creditCard); // persist the initial credit card request data in table
             return Optional.of(savedCreditCard.getRefId());
         } catch (Exception exception) {
             log.error(exception.getMessage());

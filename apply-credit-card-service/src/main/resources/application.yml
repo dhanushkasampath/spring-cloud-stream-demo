@@ -15,12 +15,11 @@ spring:
     show-sql: true
     database-platform: org.hibernate.dialect.MySQLDialect
 #Below are the spring-cloud-stream related properties
-
   cloud:
     stream:
       function:
-        definition: publishNewCreditCardEvent
+        definition: publishNewCreditCardEvent #This is the function name of our Supplier
       bindings:
         publishNewCreditCardEvent-out-0:
-          destination: CreditCardApplication
-          group: creditCard
+          destination: CreditCardApplication  # This is the queue name that we are publishing events
+          group: creditCard # This is the group that above queue belongs to

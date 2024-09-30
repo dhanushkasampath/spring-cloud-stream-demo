@@ -17,6 +17,10 @@ public class CreditCardApplicationProcessor {
 
     private final CreditCardVerificationService creditCardVerificationService;
 
+    /**
+     * This Function gets NewCreditCardEvent as input and returns VerifyCreditCardEvent as output
+     * @return
+     */
     @Bean
     public Function<NewCreditCardEvent, VerifyCreditCardEvent> verifyCreditCardApplication(){
         return newCreditCardEvent -> {

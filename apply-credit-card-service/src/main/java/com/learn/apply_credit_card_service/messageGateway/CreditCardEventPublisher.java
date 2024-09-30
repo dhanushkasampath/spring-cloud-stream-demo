@@ -16,8 +16,14 @@ public class CreditCardEventPublisher {
 
     private final EventPublisherService eventPublisherService;
 
+    /**
+     * This is a function which act as the supplier. it does not take any input argument. But it returns an object of
+     * NewCreditCardEvent
+     * @return
+     */
     @Bean
     public Supplier<NewCreditCardEvent> publishNewCreditCardEvent(){
+        log.info("publishNewCreditCardEvent supplier invoked"); // At the application start up this line method get executed. I could see only one log line of this
         return () -> {
             var newCreditCardEvent = eventPublisherService.publishEvent();
             return (newCreditCardEvent.isEmpty()) ? null : newCreditCardEvent.get();

@@ -16,11 +16,11 @@ spring:
   cloud:
     stream:
       function:
-        definition: verifyCreditCardApplication
+        definition: verifyCreditCardApplication  # This is the function name of our Function (which do the processing part)
       bindings:
-        verifyCreditCardApplication-in-0: # here in is used since it consumes a queue
-          destination: CreditCardApplication # This is the queue name where this service consumes. this should same as previous service
-          group: creditCard
+        verifyCreditCardApplication-in-0: # here 'in' is used since it consumes a queue
+          destination: CreditCardApplication # This is the queue name where this service consumes. this should same as queue used in 'apply-credit-card-service'
+          group: creditCard # This is the group that above queue belongs to
         verifyCreditCardApplication-out-0:
           destination: CreditCardVerification # This is the queue name where this service publish the messages
-          group: creditCard
+          group: creditCard # This is the group that above queue belongs to

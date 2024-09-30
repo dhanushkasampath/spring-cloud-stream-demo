@@ -13,6 +13,6 @@ import java.util.List;
 @Builder
 public class NewCreditCardEvent {
 
-    private EventType event = EventType.NEW_CREDIT_CARD;
+    private EventType event;
     private List<ApplicationDetail> creditCardApplication;
 }
