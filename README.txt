@@ -14,3 +14,9 @@ IMPLEMENTATION
 =============
 
 We have used same set of dependencies in each micro-service
+
+we have used below functional interfaces in below micro-services
+
+Supplier -> apply-credit-card-service
+Function -> credit-card-verification-service
+Consumer -> credit-card-generation-service
