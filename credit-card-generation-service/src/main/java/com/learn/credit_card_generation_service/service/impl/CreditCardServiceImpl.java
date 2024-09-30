@@ -45,6 +45,17 @@ public class CreditCardServiceImpl implements CreditCardService {
         log.info("**** Credit Card Details Saved ****");
     }
 
+    @Override
+    public String getApplicationStatus(String applicationRefId) {
+        log.info("*** Searching application status for referenceId: {} ", applicationRefId);
+        var creditCard = creditCardRepository.findByRefId(applicationRefId);
+        if (creditCard == null) {
+            return "";
+        }else {
+            return creditCard.getStatus();
+        }
+    }
+
     private Long generateRandomInt(Long min, Long max) {
         return ThreadLocalRandom.current().nextLong(min, max);
     }

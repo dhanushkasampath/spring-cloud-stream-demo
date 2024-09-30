@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CreditCardService {
     void generateCreditCardNumberAndCvv(List<CreditCardVerificationStatus> creditCardApplicationDetailList);
+
+    String getApplicationStatus(String applicationRefId);
 }
